@@ -1,5 +1,8 @@
 # nicelearning-react
 Modern React with Redux course code
 
-## Section 1 code
-https://codesandbox.io/s/react-nz5w4
+## Course
+https://www.udemy.com/course/react-redux/
+
+## Code
+https://github.com/StephenGrider/redux-code
