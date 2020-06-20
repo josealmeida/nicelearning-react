@@ -1,11 +1,12 @@
 import React from 'react';
+import './SeasonDisplay.css';
 import { Icon } from 'semantic-ui-react';
 
 const seasonConfig = {
   summer: {
     text: 'Warm Weather',
     iconName: 'sun',
-    iconColor: 'yellow',
+    iconColor: 'red',
   },
   winter: {
     text: 'Chilly Weather',
@@ -27,10 +28,20 @@ const SeasonDisplay = (props) => {
   const { text, iconName, iconColor } = seasonConfig[season];
 
   return (
-    <div>
-      <Icon name={iconName} size="massive" color={iconColor} />
+    <div className={`season-display ${season}`}>
+      <Icon
+        className="icon-left"
+        name={iconName}
+        size="massive"
+        color={iconColor}
+      />
       <h1>{text}</h1>
-      <Icon name={iconName} size="massive" color={iconColor} />
+      <Icon
+        className="icon-right"
+        name={iconName}
+        size="massive"
+        color={iconColor}
+      />
     </div>
   );
 };
