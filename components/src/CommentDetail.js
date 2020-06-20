@@ -7,18 +7,17 @@ import {
   CommentMetadata,
   CommentText,
 } from 'semantic-ui-react';
-import faker from 'faker';
 
-const CommentDetail = () => {
+const CommentDetail = (props) => {
   return (
     <Comment>
-      <CommentAvatar src={faker.image.avatar()} />
+      <CommentAvatar src={props.avatar} />
       <CommentContent>
-        <CommentAuthor as="a">Sam</CommentAuthor>
+        <CommentAuthor as="a">{props.author}</CommentAuthor>
         <CommentMetadata>
-          <div>Today at 6:00PM</div>
+          <div>{props.timeAgo}</div>
         </CommentMetadata>
-        <CommentText>Nice blog post!</CommentText>
+        <CommentText>{props.content}</CommentText>
       </CommentContent>
     </Comment>
   );
