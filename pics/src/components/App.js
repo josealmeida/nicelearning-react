@@ -1,9 +1,10 @@
 import React from 'react';
+import { Container, Segment } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 import unsplash from '../api/unsplash';
 import './App.css';
-import 'semantic-ui-css/semantic.min.css';
 import SearchBar from './SearchBar';
-import { Container } from 'semantic-ui-react';
+import ImageList from './ImageList';
 
 class App extends React.Component {
   state = { images: [] };
@@ -19,8 +20,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <Container>
-          <SearchBar onSubmit={this.onSearchSubmit} />
-          Found: {this.state.images.length} images
+          <Segment.Group raised>
+            <Segment>
+              <SearchBar onSubmit={this.onSearchSubmit} />
+            </Segment>
+            <Segment padded>
+              <ImageList images={this.state.images} />
+            </Segment>
+          </Segment.Group>
         </Container>
       </div>
     );
