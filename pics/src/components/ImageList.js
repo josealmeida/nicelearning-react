@@ -1,9 +1,10 @@
 import React from 'react';
-import { Image } from 'semantic-ui-react';
+import './ImageList.css';
+import ImageCard from './ImageCard';
 
 const ImageList = (props) => {
   const images = props.images.map((image) => {
-    return <Image src={image.urls.regular} size="small" />;
+    return <ImageCard key={image.id} image={image} />;
   });
   return <div className="image-list">{images}</div>;
 };
