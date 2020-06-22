@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
-import { Paper, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 
 class SearchBar extends React.Component {
   state = { term: '' };
@@ -17,21 +17,19 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className="search-bar">
-        <Paper>
-          <form className="search-bar-form" onSubmit={this.onFormSubmit}>
-            <TextField
-              label="Video Search"
-              margin="normal"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              fullWidth
-              variant="outlined"
-              value={this.state.term}
-              onChange={this.onInputChange}
-            />
-          </form>
-        </Paper>
+        <form onSubmit={this.onFormSubmit}>
+          <TextField
+            label="Video Search"
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            fullWidth
+            variant="outlined"
+            value={this.state.term}
+            onChange={this.onInputChange}
+          />
+        </form>
       </div>
     );
   }
