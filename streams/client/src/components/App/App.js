@@ -1,37 +1,34 @@
-import React from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-import "./App.css";
-
-const StreamList = () => {
-  return <div>StreamList</div>;
-};
-
-const StreamCreate = () => {
-  return <div>StreamCreate</div>;
-};
-
-const StreamEdit = () => {
-  return <div>StreamEdit</div>;
-};
-
-const StreamDelete = () => {
-  return <div>StreamDelete</div>;
-};
-
-const StreamShow = () => {
-  return <div>StreamShow</div>;
-};
+import './App.css';
+import StreamList from '../streams/StreamList';
+import StreamCreate from '../streams/StreamCreate';
+import StreamEdit from '../streams/StreamEdit';
+import StreamDelete from '../streams/StreamDelete';
+import StreamShow from '../streams/StreamShow';
+import Header from '../Header';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
 
 const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path="/" exact component={StreamList} />
-        <Route path="/streams/new" component={StreamCreate} />
-        <Route path="/streams/edit" component={StreamEdit} />
-        <Route path="/streams/delete" component={StreamDelete} />
-        <Route path="/streams/show" component={StreamShow} />
+        <CssBaseline />
+        <Header />
+        <Container maxWidth="xl">
+          <Grid container spacing={3}>
+            <Grid item md={12}>
+              <Route path="/" exact component={StreamList} />
+              <Route path="/streams/new" component={StreamCreate} />
+              <Route path="/streams/edit" component={StreamEdit} />
+              <Route path="/streams/delete" component={StreamDelete} />
+              <Route path="/streams/show" component={StreamShow} />
+            </Grid>
+          </Grid>
+        </Container>
       </BrowserRouter>
     </div>
   );

@@ -5,10 +5,10 @@ function mapStateToProps(state) {
   return {};
 }
 
-class StreamCreate extends Component {
+class StreamEdit extends Component {
   render() {
-    return <div>StreamCreate</div>;
+    return <div>StreamEdit</div>;
   }
 }
 
-export default connect(mapStateToProps)(StreamCreate);
+export default connect(mapStateToProps)(StreamEdit);
