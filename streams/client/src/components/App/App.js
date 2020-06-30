@@ -18,7 +18,7 @@ const App = () => {
       <BrowserRouter>
         <CssBaseline />
         <Header />
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" style={{ marginTop: '10px' }}>
           <Grid container spacing={3}>
             <Grid item md={12}>
               <Route path="/" exact component={StreamList} />
