@@ -1,7 +1,9 @@
 import React from 'react';
+import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
+
 import './App.css';
 import Accordion from '../Accordion';
-import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
+import Search from '../Search';
 
 const items = [
   {
@@ -26,7 +28,8 @@ const App = () => {
         <Grid container spacing={1}>
           <Grid item xs={12}>
             <Paper style={{ marginTop: '10px' }}>
-              <Accordion items={items} />
+              {/*<Accordion items={items} />*/}
+              <Search />
             </Paper>
           </Grid>
         </Grid>
