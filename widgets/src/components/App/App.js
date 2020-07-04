@@ -22,16 +22,12 @@ const items = [
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" style={{ marginTop: '10px' }}>
       <CssBaseline />
-      <Container maxWidth="md">
-        <Grid container spacing={1}>
-          <Grid item xs={12}>
-            <Paper style={{ marginTop: '10px' }}>
-              {/*<Accordion items={items} />*/}
-              <Search />
-            </Paper>
-          </Grid>
+      <Container maxWidth="xl">
+        <Grid>
+          <Search />
+          {/*<Accordion items={items} />*/}
         </Grid>
       </Container>
     </div>
