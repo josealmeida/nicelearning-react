@@ -8,35 +8,35 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 
 const Search = () => {
-  const [term, setTerm] = useState('');
+  const [term, setTerm] = useState('book');
+  const [debouncedTerm, setDebouncedTerm] = useState(term);
   const [results, setResults] = useState([]);
+
+  useEffect(() => {
+    const timerId = setTimeout(() => {
+      setDebouncedTerm(term);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [term]);
 
   useEffect(() => {
     const search = async () => {
       const { data } = await wikipedia.get('', {
         params: {
-          srsearch: term,
+          srsearch: debouncedTerm,
         },
       });
-      setResults(data.query.search);
+      if (data.query) {
+        setResults(data.query.search);
+      } else {
+        setResults([]);
+      }
     };
-
-    if (term && !results.length) {
-      search();
-    } else {
-      const timeoutId = setTimeout(() => {
-        if (term) {
-          search();
-        }
-      }, 1000);
-
-      // clean-up function gets invoked the next
-      // time useEffect is called / component re-render
-      return () => {
-        clearTimeout(timeoutId);
-      };
-    }
-  }, [term]);
+    search();
+  }, [debouncedTerm]);
 
   const renderedResults = results.map((result) => {
     return (
