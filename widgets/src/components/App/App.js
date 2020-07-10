@@ -5,6 +5,8 @@ import './App.css';
 import Accordion from '../Accordion';
 import Search from '../Search';
 import Dropdown from '../Dropdown';
+import Button from '@material-ui/core/Button';
+import Translate from '../Translate';
 
 const items = [
   {
@@ -28,19 +30,12 @@ const options = [
 ];
 
 const App = () => {
-  const [selected, setSelected] = useState(options[0]);
-
   return (
     <div className="App" style={{ marginTop: '10px' }}>
       <CssBaseline />
       <Container maxWidth="xl">
         <Grid>
-          <Dropdown
-            options={options}
-            selected={selected}
-            onSelectedChange={setSelected}
-          />
-          {/*<Accordion items={items} />*/}
+          <Translate />
         </Grid>
       </Container>
     </div>
