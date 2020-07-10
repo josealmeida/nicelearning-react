@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'semantic-ui-css/semantic.css';
 
-const Dropdown = ({ options, selected, onSelectedChange }) => {
+const Dropdown = ({ options, selected, onSelectedChange, label }) => {
   const [open, setOpen] = useState(false);
+  const ref = useRef();
+
+  useEffect(() => {
+    const onBodyClick = (event) => {
+      // if you click any element that is not the form
+      // (ref.current), close the form
+      if (!ref.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.body.addEventListener('click', onBodyClick);
+
+    // cleanup function will remove the event listener
+    return () => {
+      document.body.removeEventListener('click', onBodyClick);
+    };
+  }, []);
 
   const renderedOptions = options.map((option) => {
     if (option.value === selected.value) {
@@ -13,7 +31,9 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
       <div
         key={option.value}
         className="item"
-        onClick={() => onSelectedChange(option)}
+        onClick={() => {
+          onSelectedChange(option);
+        }}
       >
         {option.label}
       </div>
@@ -21,11 +41,13 @@ const Dropdown = ({ options, selected, onSelectedChange }) => {
   });
 
   return (
-    <div className="ui form">
+    <div className="ui form" ref={ref}>
       <div className="field">
-        <label className="label">Select a Color</label>
+        <label className="label">{label}</label>
         <div
-          onClick={() => setOpen(!open)}
+          onClick={() => {
+            setOpen(!open);
+          }}
           className={`ui selection dropdown ${open ? 'visible active' : ''}`}
         >
           <i className="dropdown icon" />
