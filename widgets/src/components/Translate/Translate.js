@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Dropdown from '../Dropdown';
 import Input from '@material-ui/core/Input';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
 import Convert from '../Convert';
 import Typography from '@material-ui/core/Typography';
 
@@ -20,34 +18,37 @@ const Translate = () => {
   const [text, setText] = useState('');
   return (
     <div>
-      <Paper style={{ paddingLeft: '10px', paddingRight: '10px' }}>
-        <Grid container spacing={3} style={{ marginTop: '10px' }}>
-          <Grid item xs={12} style={{ paddingBottom: '10px' }}>
-            <FormControl>
-              <InputLabel htmlFor="translate-text-input">Enter Text</InputLabel>
-              <Input
-                id="translate-text-input"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item xs={3}>
-            <Dropdown
-              selected={language}
-              onSelectedChange={setLanguage}
-              options={options}
-              label="Select a language"
+      <Grid container>
+        <Grid
+          item
+          xs={12}
+          style={{ paddingTop: '10px', paddingBottom: '10px' }}
+        >
+          <FormControl>
+            <Input
+              id="translate-text-input"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter Text"
+              inputProps={{ 'aria-label': 'enter text' }}
             />
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="h6" gutterBottom>
-              Output
-            </Typography>
-            <Convert text={text} language={language} />
-          </Grid>
+          </FormControl>
         </Grid>
-      </Paper>
+        <Grid item xs={3}>
+          <Dropdown
+            selected={language}
+            onSelectedChange={setLanguage}
+            options={options}
+            label="Select a language"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h6" gutterBottom>
+            Output
+          </Typography>
+          <Convert text={text} language={language} />
+        </Grid>
+      </Grid>
     </div>
   );
 };

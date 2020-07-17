@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
-import { CssBaseline, Container, Grid, Paper } from '@material-ui/core';
+import { CssBaseline, Container } from '@material-ui/core';
 
 import './App.css';
 import Accordion from '../Accordion';
 import Search from '../Search';
 import Dropdown from '../Dropdown';
-import Button from '@material-ui/core/Button';
 import Translate from '../Translate';
+import Route from '../Route';
+import Header from '../Header';
+import Paper from '@material-ui/core/Paper';
 
-const items = [
+const accordionItems = [
   {
     title: 'What is React',
     content: 'React is a frontend framework',
@@ -23,18 +25,46 @@ const items = [
   },
 ];
 
-const options = [
+const dropdownOptions = [
   { label: 'Red', value: 'red' },
   { label: 'Green', value: 'green' },
   { label: 'Blue', value: 'blue' },
 ];
 
 const App = () => {
+  const [selectedDropdown, setSelectedDropdown] = useState(dropdownOptions[0]);
+
   return (
     <div className="App" style={{ marginTop: '10px' }}>
       <CssBaseline />
       <Container maxWidth="xl">
-        <Translate />
+        <Header />
+        <Paper
+          style={{
+            marginTop: '10px',
+            marginBottom: '10px',
+            paddingLeft: '10px',
+            paddingRight: '10px',
+          }}
+        >
+          <Route path="/">
+            <Accordion items={accordionItems} />
+          </Route>
+          <Route path="/list">
+            <Search />
+          </Route>
+          <Route path="/dropdown">
+            <Dropdown
+              label="Select a colour"
+              options={dropdownOptions}
+              selected={selectedDropdown}
+              onSelectedChange={setSelectedDropdown}
+            />
+          </Route>
+          <Route path="/translate">
+            <Translate />
+          </Route>
+        </Paper>
       </Container>
     </div>
   );

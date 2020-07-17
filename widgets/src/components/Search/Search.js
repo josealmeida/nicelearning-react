@@ -64,19 +64,19 @@ const Search = () => {
 
   return (
     <div className="search">
-      <Card key="search-card" style={{ marginBottom: '10px' }}>
-        <CardContent>
-          <form noValidate autoComplete="off">
-            <TextField
-              id="search-term"
-              label="Enter Search Term"
-              value={term}
-              onChange={(e) => setTerm(e.target.value)}
-              fullWidth
-            />
-          </form>
-        </CardContent>
-      </Card>
+      <form
+        noValidate
+        autoComplete="off"
+        style={{ paddingTop: '10px', paddingBottom: '20px' }}
+      >
+        <TextField
+          id="search-term"
+          label="Enter Search Term"
+          value={term}
+          onChange={(e) => setTerm(e.target.value)}
+          fullWidth
+        />
+      </form>
       {renderedResults}
     </div>
   );

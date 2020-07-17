@@ -41,7 +41,11 @@ const Dropdown = ({ options, selected, onSelectedChange, label }) => {
   });
 
   return (
-    <div className="ui form" ref={ref}>
+    <div
+      className="ui form"
+      ref={ref}
+      style={{ paddingTop: '10px', paddingBottom: '20px' }}
+    >
       <div className="field">
         <label className="label">{label}</label>
         <div
