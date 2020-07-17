@@ -5,11 +5,14 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
+import Convert from '../Convert';
+import Typography from '@material-ui/core/Typography';
 
 const options = [
   { label: 'Portuguese', value: 'pt' },
   { label: 'French', value: 'fr' },
   { label: 'Spanish', value: 'es' },
+  { label: 'Dutch', value: 'nl' },
 ];
 
 const Translate = () => {
@@ -17,9 +20,9 @@ const Translate = () => {
   const [text, setText] = useState('');
   return (
     <div>
-      <Grid container spacing={3} style={{ marginTop: '10px' }}>
-        <Grid item xs={12} style={{ paddingBottom: '10px' }}>
-          <Paper>
+      <Paper style={{ paddingLeft: '10px', paddingRight: '10px' }}>
+        <Grid container spacing={3} style={{ marginTop: '10px' }}>
+          <Grid item xs={12} style={{ paddingBottom: '10px' }}>
             <FormControl>
               <InputLabel htmlFor="translate-text-input">Enter Text</InputLabel>
               <Input
@@ -28,17 +31,23 @@ const Translate = () => {
                 onChange={(e) => setText(e.target.value)}
               />
             </FormControl>
-          </Paper>
+          </Grid>
+          <Grid item xs={3}>
+            <Dropdown
+              selected={language}
+              onSelectedChange={setLanguage}
+              options={options}
+              label="Select a language"
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6" gutterBottom>
+              Output
+            </Typography>
+            <Convert text={text} language={language} />
+          </Grid>
         </Grid>
-        <Grid item xs={12}>
-          <Dropdown
-            selected={language}
-            onSelectedChange={setLanguage}
-            options={options}
-            label="Select a language"
-          />
-        </Grid>
-      </Grid>
+      </Paper>
     </div>
   );
 };

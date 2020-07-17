@@ -34,9 +34,7 @@ const App = () => {
     <div className="App" style={{ marginTop: '10px' }}>
       <CssBaseline />
       <Container maxWidth="xl">
-        <Grid>
-          <Translate />
-        </Grid>
+        <Translate />
       </Container>
     </div>
   );
